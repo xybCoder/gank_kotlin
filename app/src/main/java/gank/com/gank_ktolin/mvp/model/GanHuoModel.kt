@@ -7,7 +7,7 @@ import io.reactivex.Observable
 
 class GanHuoModel {
 
-    fun getGanHuo(type: String, page: Int): Observable<GanHuoData> {
-        return RetrofitManager.service.getGanHuoData(type, page).compose(IoMainScheduler())
+    fun getGanHuo(type: String, pageSize: Int,pageIndex: Int): Observable<GanHuoData> {
+        return RetrofitManager.service.getGanHuoData(type, pageSize,pageIndex).compose(IoMainScheduler())
     }
 }
