@@ -16,23 +16,30 @@ import kotlinx.android.synthetic.main.view_toolbar_with_indicator.*
 
 class MainActivity : BaseActivity() {
 
-    private var mTitles = arrayListOf("Android","iOS","前端","瞎推荐","拓展资源","App")
-    private var mFragmentList: List<Fragment> = ArrayList()
+    private var mTitles: ArrayList<String> = ArrayList()
+    private var mFragmentList: ArrayList<Fragment> = ArrayList()
 
     //默认为0
     private var mIndex = 0
 
     override fun initView() {
-        mFragmentList to HomeFragment()
-        mFragmentList to HomeFragment()
-        mFragmentList to HomeFragment()
-        mFragmentList to HomeFragment()
-        mFragmentList to HomeFragment()
-        val pagerAdapter =  BaseFragmentAdapter(supportFragmentManager,mFragmentList,mTitles)
+        mTitles.add("Android")
+        mTitles.add("iOS")
+        mTitles.add("前端")
+        mTitles.add("瞎推荐")
+        mTitles.add("拓展资源")
+        mFragmentList.add(HomeFragment.newInstance(0))
+        mFragmentList.add(HomeFragment.newInstance(1))
+        mFragmentList.add(HomeFragment.newInstance(2))
+        mFragmentList.add(HomeFragment.newInstance(3))
+        mFragmentList.add(HomeFragment.newInstance(4))
+        val pagerAdapter = BaseFragmentAdapter(supportFragmentManager, mFragmentList, mTitles)
         container.setAdapter(pagerAdapter)
         container.setOffscreenPageLimit(5)
+        container.setCurrentItem(mIndex, false)
         tab_layout.setTabMode(TabLayout.MODE_SCROLLABLE)
         tab_layout.setupWithViewPager(container)
+
 
     }
 
@@ -43,7 +50,6 @@ class MainActivity : BaseActivity() {
     override fun layoutId(): Int {
         return R.layout.activity_main
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
