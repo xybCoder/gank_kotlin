@@ -33,7 +33,7 @@ abstract class BaseActivity : AppCompatActivity() {
         request()
     }
 
-    private fun initView() {
+   open  fun initView() {
 
     }
 
